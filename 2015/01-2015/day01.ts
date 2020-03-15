@@ -1,8 +1,7 @@
-const fs = require('fs');
+import * as fs from "fs";
 
 const day1pt1 = () => {
-  fs.readFile('./day01_input.txt', (err: any, data: String) => {
-    console.time('time');
+  fs.readFile('./day01_input.txt', (err: any, data: Buffer) => {
     const directions: String = data.toString();
     const directionsArray: String[] = directions.split('');
     const answer = directionsArray.reduce((accumulator: number, currentValue: String) => {
@@ -12,7 +11,6 @@ const day1pt1 = () => {
         return accumulator -= 1;
       }
     }, 0)
-    console.timeEnd('time');
     console.log(answer);
   })
 }
@@ -20,8 +18,7 @@ const day1pt1 = () => {
 day1pt1();
 
 const day1pt2 = () => {
-  fs.readFile('./day01_input.txt', (err: any, data: String) => {
-    console.time('time-position');
+  fs.readFile('./day01_input.txt', (err: any, data: Buffer) => {
     const directions: String = data.toString();
     const directionsArray: String[] = directions.split('');
     
@@ -37,7 +34,6 @@ const day1pt2 = () => {
       return accumulator < 0;
     });
     console.log(counter);
-    console.timeEnd('time-position');
   })
 }
 

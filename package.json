@@ -1,0 +1,24 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "Repository with solutions to the Advent of Code challenge. 2015 (ongoing), 2016 (to be started), 2017 (to be started), 2018 (to be started), 2019 (to be started)",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RCarvalhoDan/Advent-of-Code.git"
+  },
+  "author": "Daniel Carvalho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RCarvalhoDan/Advent-of-Code/issues"
+  },
+  "homepage": "https://github.com/RCarvalhoDan/Advent-of-Code#readme",
+  "devDependencies": {
+    "@types/node": "^13.9.1"
+  }
+}
