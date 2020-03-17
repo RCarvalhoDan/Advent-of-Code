@@ -4,11 +4,34 @@ var fs = require("fs");
 // l,w,h => 2x3x4 => 2.l.w + 2.w.h + 2.h.l
 //                   2.2.3 + 2.3.4 + 2.4.2
 //                    2*6   +  2*12  +  2*8 = 52 + (3*2) = 58
-var day02 = function () {
-    fs.readFile('./day02_input.txt', function (err, data) {
+var surfaceArea = function (length, width, height) {
+    var l = length;
+    var w = width;
+    var h = height;
+    return (2 * l * w + 2 * w * h + 2 * h * l);
+};
+var day02pt1 = function () {
+    fs.readFile('./day02_input.txt', 'utf8', function (err, data) {
         var dimensions = data.toString();
-        var dimensionsArr = dimensions.split('x').join().split('\n');
-        console.log(dimensionsArr[0]);
+        var dimensionsArr = dimensions.split('x').join().split('\n').join().split(',').map(Number);
+        var subArr = [];
+        var total = 0;
+        for (var i = 0; i <= dimensionsArr.length; i++) {
+            if (subArr.length < 3) {
+                subArr.push(dimensionsArr[i]);
+            }
+            else {
+                var partialWrapping = surfaceArea(subArr[0], subArr[1], subArr[2]);
+                var sortedArr = subArr.sort(function (a, b) { return a - b; });
+                var smallerSurface = sortedArr[0] * sortedArr[1];
+                total += partialWrapping + smallerSurface;
+                while (subArr.length > 0) {
+                    subArr.pop();
+                }
+                subArr.push(dimensionsArr[i]);
+            }
+        }
+        console.log(total);
     });
 };
-day02();
+day02pt1();
