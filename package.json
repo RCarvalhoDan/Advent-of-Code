@@ -19,6 +19,10 @@
   },
   "homepage": "https://github.com/RCarvalhoDan/Advent-of-Code#readme",
   "devDependencies": {
+    "@types/crypto-js": "^3.1.47",
     "@types/node": "^13.9.1"
+  },
+  "dependencies": {
+    "crypto-js": "^4.0.0"
   }
 }
