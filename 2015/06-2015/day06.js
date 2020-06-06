@@ -66,4 +66,51 @@ var day06 = function () {
         console.log(countLit);
     });
 };
-day06();
+// day06();
+var day06pt2 = function () {
+    fs.readFile("day06_input.txt", "utf8", function (err, data) {
+        var dataString = data.toString();
+        var dataArr = dataString.split("\n");
+        var grid = [];
+        // Create 1000x1000 grid
+        for (var i = 0; i < 1000; i++) {
+            grid[i] = new Array(1000);
+        }
+        // Initialize all lights as 0 (off)
+        for (var i = 0; i < grid.length; i++) {
+            for (var j = 0; j < grid[i].length; j++) {
+                grid[i][j] = 0;
+            }
+        }
+        // Read all entries and execute instruction
+        for (var i = 0; i < dataArr.length; i++) {
+            var instruction = extractInstructions(dataArr[i]);
+            var command = instruction.command;
+            // Switch on, off or toggle lights in the given range
+            for (var i_2 = instruction.startX; i_2 <= instruction.endX; i_2++) {
+                for (var j = instruction.startY; j <= instruction.endY; j++) {
+                    if (command === "on") {
+                        grid[i_2][j] = grid[i_2][j] + 1;
+                    }
+                    if (command === "off") {
+                        if (grid[i_2][j] > 0) {
+                            grid[i_2][j] = grid[i_2][j] - 1;
+                        }
+                    }
+                    if (command === "toggle") {
+                        grid[i_2][j] = grid[i_2][j] + 2;
+                    }
+                }
+            }
+        }
+        // Count total of lit lights
+        var totalBrigthness = 0;
+        for (var i = 0; i < grid.length; i++) {
+            for (var j = 0; j < grid[i].length; j++) {
+                totalBrigthness = totalBrigthness + grid[i][j];
+            }
+        }
+        console.log(totalBrigthness);
+    });
+};
+day06pt2();
