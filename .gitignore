@@ -1,2 +1,6 @@
-# Dependency directories
+# JS dependency directories
 node_modules/
+
+# Python directories
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*.ipynb
